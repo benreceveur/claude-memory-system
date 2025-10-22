@@ -1,0 +1,37 @@
+# Logs
+*.log
+skill-execution.log
+auto-behavior.log
+agent-dispatch.log
+installer.log
+
+# Caches
+.skill-cache/
+*.cache
+node_modules/
+
+# Backups
+backups/
+*.backup
+
+# Temporary files
+*.tmp
+/tmp/
+.DS_Store
+
+# Demo and test directories
+demo/
+integrations/api-server/
+
+# Configuration (may contain sensitive data)
+auto-behavior-config.json
+chroma-config.json
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+chroma-data/
+
+# Validation reports
+validation-test-report.json
