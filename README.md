@@ -6,6 +6,7 @@
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](#license)
 [![Platform](https://img.shields.io/badge/platform-macOS%20%7C%20Linux-lightgrey.svg)](#system-requirements)
 [![GitHub Stars](https://img.shields.io/github/stars/benreceveur/claude-memory-system)](https://github.com/benreceveur/claude-memory-system/stargazers)
+[![Codacy Badge](https://app.codacy.com/project/badge/Grade/PROJECT_ID)](https://app.codacy.com/gh/benreceveur/claude-memory-system/dashboard?utm_source=gh&utm_medium=referral&utm_content=&utm_campaign=Badge_grade)
 
 > **Reduce token usage by 98%** and **execute 20-30x faster** with intelligent Skills orchestration
 

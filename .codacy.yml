@@ -1,0 +1,66 @@
+---
+# Codacy Configuration for Claude Memory System
+# https://docs.codacy.com/repositories-configure/codacy-configuration-file/
+
+# Engines to run
+engines:
+  # JavaScript/Node.js analysis
+  eslint:
+    enabled: true
+    exclude_paths:
+      - "node_modules/**"
+      - ".git/**"
+      - "**/*.min.js"
+
+  # Shell script analysis
+  shellcheck:
+    enabled: true
+    exclude_paths:
+      - ".git/**"
+
+  # Markdown linting
+  markdownlint:
+    enabled: true
+    exclude_paths:
+      - ".git/**"
+      - "node_modules/**"
+      - "CHANGELOG.md"  # Allow flexibility in changelog
+
+  # Security scanning
+  trivy:
+    enabled: true
+    exclude_paths:
+      - ".git/**"
+
+  # Metrics
+  metrics:
+    enabled: true
+
+  duplication:
+    enabled: true
+    exclude_paths:
+      - "agents/**"  # Agents may have similar patterns
+      - "skills/**"  # Skills may have similar patterns
+    config:
+      languages:
+        - javascript
+
+# File exclusions
+exclude_paths:
+  - "node_modules/**"
+  - ".git/**"
+  - "**/*.min.js"
+  - "**/dist/**"
+  - "**/build/**"
+  - "**/.DS_Store"
+  - "**/package-lock.json"
+  - "**/yarn.lock"
+
+# Coverage settings (if code coverage is added later)
+coverage:
+  precision: 2
+  round: nearest
+  range: "50...100"
+
+# Partial clone support (for large repositories)
+partial_clone: true
