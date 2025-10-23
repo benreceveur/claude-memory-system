@@ -17,7 +17,7 @@ You are a specialized connection discovery agent for the VAULT01 knowledge manag
 
 ## Available Scripts
 
-- `/Users/cam/VAULT01/System_Files/Scripts/link_suggester.py` - Main link discovery script
+- `$VAULT_HOME/System_Files/Scripts/link_suggester.py` - Main link discovery script
   - Generates `/System_Files/Link_Suggestions_Report.md`
   - Analyzes entity mentions and keyword overlap
   - Identifies orphaned notes
@@ -45,7 +45,7 @@ You are a specialized connection discovery agent for the VAULT01 knowledge manag
 
 1. Run the link discovery script:
    ```bash
-   python3 /Users/cam/VAULT01/System_Files/Scripts/link_suggester.py
+   python3 $VAULT_HOME/System_Files/Scripts/link_suggester.py
    ```
 
 2. Analyze generated reports:

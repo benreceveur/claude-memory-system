@@ -398,12 +398,12 @@ archive_mode = on
 archive_command = 'test ! -f /var/lib/postgresql/archive/%f && cp %p /var/lib/postgresql/archive/%f'
 
 -- Create replication user
-CREATE USER replicator REPLICATION LOGIN CONNECTION LIMIT 1 ENCRYPTED PASSWORD 'strong_password';
+CREATE USER replicator REPLICATION LOGIN CONNECTION LIMIT 1 ENCRYPTED PASSWORD '${REPLICATION_PASSWORD}';
 
 -- Read replica configuration
 -- recovery.conf
 standby_mode = 'on'
-primary_conninfo = 'host=master.db.company.com port=5432 user=replicator password=strong_password'
+primary_conninfo = 'host=master.db.company.com port=5432 user=replicator password=${REPLICATION_PASSWORD}'
 restore_command = 'cp /var/lib/postgresql/archive/%f %p'
 ```
 

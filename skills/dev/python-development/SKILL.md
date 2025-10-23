@@ -81,12 +81,12 @@ def retry(max_attempts=3):
 
 ### Type Hints
 ```python
-from typing import List, Dict, Optional
+from typing import List, Dict, Optional, Any
 
 def process_data(
-    items: List[Dict[str, any]],
+    items: List[Dict[str, Any]],
     threshold: float = 0.5
-) -> Optional[Dict[str, any]]:
+) -> Optional[Dict[str, Any]]:
     pass
 ```
 

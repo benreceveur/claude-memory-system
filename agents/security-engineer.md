@@ -550,7 +550,55 @@ class SecurityMonitor:
         except Exception as e:
             self.logger.error(f"Error checking CloudTrail anomalies: {str(e)}")
             return []
-    
+
+    def detect_login_anomalies(self, events: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Detect anomalous login patterns in events"""
+
+        anomalies = []
+
+        try:
+            # Track login attempts by user and IP
+            login_attempts = {}
+
+            for event in events:
+                username = event.get('username', 'Unknown')
+                source_ip = event.get('source_ip', 'Unknown')
+
+                key = f"{username}:{source_ip}"
+                if key not in login_attempts:
+                    login_attempts[key] = []
+
+                login_attempts[key].append(event)
+
+            # Detect anomalies
+            for key, attempts in login_attempts.items():
+                # Multiple rapid attempts from same IP
+                if len(attempts) > 5:
+                    anomalies.append({
+                        'anomaly_type': 'rapid_login_attempts',
+                        'user_ip': key,
+                        'attempt_count': len(attempts),
+                        'severity': 'high',
+                        'description': f"Detected {len(attempts)} login attempts from {key}"
+                    })
+
+                # Detect unusual user agents
+                user_agents = [a.get('user_agent') for a in attempts if a.get('user_agent')]
+                if len(set(user_agents)) > 3:
+                    anomalies.append({
+                        'anomaly_type': 'multiple_user_agents',
+                        'user_ip': key,
+                        'user_agent_count': len(set(user_agents)),
+                        'severity': 'medium',
+                        'description': f"Multiple user agents detected for {key}"
+                    })
+
+            return anomalies
+
+        except Exception as e:
+            self.logger.error(f"Error detecting login anomalies: {str(e)}")
+            return []
+
     def analyze_iam_permissions(self) -> Dict[str, Any]:
         """Analyze IAM permissions for security risks"""
         

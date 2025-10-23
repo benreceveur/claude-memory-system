@@ -683,7 +683,7 @@ alertmanager:
               storage: 10Gi
 
 grafana:
-  adminPassword: "secure-password"
+  adminPassword: ${GRAFANA_ADMIN_PASSWORD}  # Set via secret or environment variable
   persistence:
     enabled: true
     storageClassName: gp3

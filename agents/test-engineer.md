@@ -662,9 +662,11 @@ class PerformanceTestFramework {
         total: errors.length,
         byType: this.groupBy(errors, 'type'),
         timeline: errors.map(e => ({ timestamp: e.timestamp, type: e.type }))
-      },
-      recommendations: this.generatePerformanceRecommendations(results)
+      }
     };
+
+    // Generate recommendations based on the analysis
+    analysis.recommendations = this.generatePerformanceRecommendations(analysis);
 
     this.logResults(analysis);
     return analysis;
@@ -685,9 +687,9 @@ class PerformanceTestFramework {
     }, {});
   }
 
-  generatePerformanceRecommendations(results) {
+  generatePerformanceRecommendations(analysis) {
     const recommendations = [];
-    const { summary, responseTime } = this.analyzeResults(results);
+    const { summary, responseTime } = analysis;
 
     if (responseTime.mean > this.thresholds.responseTime) {
       recommendations.push({
