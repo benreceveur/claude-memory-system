@@ -31,29 +31,38 @@ Transform your Claude Code experience with intelligent memory, context-aware ass
 
 ## 🚀 Quick Start
 
-### Installation
+### One-Command Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/benreceveur/claude-memory-system.git
 cd claude-memory-system
 
-# Initialize memory system (loads automatically with Claude Code)
-./memory-loader.sh
+# Run the turnkey installer
+./install.sh
 ```
+
+**That's it!** The installer automatically:
+- Installs 23 Skills and 75 Agents
+- Configures auto-loading for every terminal
+- Sets up the memory system
+- Validates the installation
 
 ### Verify Installation
 
 ```bash
-# Check Skills orchestration
+# Check system status
+cd ~/.claude/memory
 node auto-behavior-system.js status
 
 # Test Skills detection
 node auto-behavior-system.js test-skill
 
-# View system health
-node enhanced-memory-manager.js info
+# View all skills
+node skill-executor.js list
 ```
+
+**See [INSTALL.md](INSTALL.md) for detailed installation instructions.**
 
 ---
 
